@@ -16,25 +16,25 @@ Ez Pz to use event simulation in Python
 
 ## Usage
 
-Import MSim::
+Import MSim
 
     import Msim
 
-Create the simulation object::
+Create the simulation object
 
     simulation = Msim.Sim()
 
-Set the time limit for the simulation::
+Set the time limit for the simulation
 
     simulation.set_run_till(1000)
 
-Add event::
+Add event
 
     evt = simulation.create_event(type_desc="create", start=simulation.now()+1, extra=None, f=func_creating)
     simulation.add_event(evt)
 
 
-And here are the parameters that you can pass to the create_event()::
+And here are the parameters that you can pass to the create_event()
 
 | Parameter  | Description                                                                                                                                                     |
 |------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -44,7 +44,7 @@ And here are the parameters that you can pass to the create_event()::
 | f          | Function that will be called once the event is started\. The parameters the function receive are the simulation and the event itself                            |
 
 
-Create the functions that the events will call::
+Create the functions that the events will call
 
     def func_creating(s, evt):
         evt = s.create_event(type_desc="terminate", start=s.now()+5, extra=None, f=func_terminating)
@@ -53,7 +53,7 @@ Create the functions that the events will call::
     def func_terminating(s, evt):
         return
 
-Run the simulation!::
+Run the simulation!
 
     simulation.run()
 
