@@ -70,3 +70,52 @@ In "example2.py" there is an special event that is recalled every 60 seconds.
 
 
 ## Extra information
+
+#### Handler event function 
+
+This is a basic template for a function that handle the events. The first parameter is aways the simulation and the second parameter is the event.
+
+Every time a event is started the function asigned for this event is called.
+
+    def func_creating(s, evt):
+        pass
+
+
+
+#### Repeting event 
+
+For a event to be recalled you need to re-add this event to the event list in the simulation, so just call create event again
+
+
+    def func_repeating(s, evt):
+        evt = None
+        evt = s.create_event(type_desc="repeating", start=s.now()+interval, extra=evt.extra, f=func_repeating)
+        s.add_event(evt)
+
+#### Information about Sim object
+
+Parameters
+
+| Parameter                | Description                                                                       |
+|--------------------------|-----------------------------------------------------------------------------------|
+| events\_list             | Entire list of events waiting to be started                                       |
+| time\_now                | The actual time of the simulation                                                 |
+| run\_till                | Time limit to stop the simulation \(may stop before if the event\_list is empty\) |
+| total\_events\_created   | Information about total event created                                             |
+| total\_events\_add\_list | Information about total events really added to the list                           |
+| total\_events\_executed  | Information about total events executed                                           |
+
+
+Methods
+
+| Methods                                                        | Description                                                                                 |
+|----------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| now\(\)                                                        | Return the actual time of the simulation                                                    |
+| set\_run\_till\(t:int\)                                        | Set the time limit to run the simulation                                                    |
+| create\_event\(type\_desc:str, start:int, extra=None, f=None\) | Create an event object                                                                      |
+| add\_event\(evt:Evento\)                                       | Add the event object to the event\_list                                                     |
+| run\(\)                                                        | Run the simulation                                                                          |
+| is\_empty\(\)                                                  | Return if the event\_list is empty                                                          |
+| print\_eventos\(\)                                             | Print the events in the event\_list                                                         |
+| get\_proximo\_evento\(\)                                       | Return the next event and set the simulation to its time                                    |
+| validate\_fila\(\)                                             | Validate if the event\_list is organized \(not need unless you are messing with the queue\) |
