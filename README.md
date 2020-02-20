@@ -1,6 +1,18 @@
-=================================
-Msim: Simple python event simulator
-=================================
+# Msim: Simple python event simulator
+
+Ez Pz to use event simulation in Python
+
+1. Create a simulation
+
+2. Set the time limit
+
+3. Create the event
+
+4. Create functions do handle events
+
+5. Run the simulation
+
+
 
 ## Usage
 
@@ -54,3 +66,7 @@ Examples folder contain 2 examples you can try.
 In "example1.py" the events keep recreating more of then.
 
 In "example2.py" there is an special event that is recalled every 60 seconds.
+
+
+
+## Extra information
